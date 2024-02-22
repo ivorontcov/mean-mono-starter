@@ -1,0 +1,12 @@
+{
+    "auth": {
+        "responseType": "code",
+        "authority": "https://a-ci.exampleauth.io/_api/auth/tenant-name",
+        "clientId": "my-client-id",
+        "automaticSilentRenew": true,
+        "accessTokenExpiringNotificationTimeInSeconds": 60
+    },
+    "backend": {
+        "baseUrl": "http://127.0.0.1:8080"
+    }
+}

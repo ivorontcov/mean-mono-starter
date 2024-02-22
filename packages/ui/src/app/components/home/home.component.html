@@ -1,0 +1,11 @@
+<div>
+    <h1>Home</h1>
+    <p>Welcome to the home page</p>
+    <div>List of projects:</div>
+
+    @for (project of projects; track $index) {
+        <div>
+            <a [routerLink]="['/project', project.id]">{{ project.name }}</a>
+        </div>
+    }
+</div>

@@ -1,0 +1,24 @@
+FROM node:20 AS build
+
+# Set the source folder
+ARG SOURCE_FOLDER="./"
+
+# Create app directory
+WORKDIR /var/www/
+
+# Bundle app source
+COPY ${SOURCE_FOLDER} .
+
+RUN npm i --w=packages/common
+RUN npm i --w=packages/ui
+
+RUN npm run build:common
+RUN npm run build:ui
+
+FROM nginx:1.17-alpine
+COPY VERSION /VERSION
+COPY --from=build /var/www/packages/ui/dist/workflow /var/www/
+
+COPY default.conf /etc/nginx/conf.d/
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh

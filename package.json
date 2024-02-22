@@ -1,0 +1,42 @@
+{
+  "name": "example",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "npm run build:common && npm run watch",
+    "noauth": "npm run build:common && npm run watch:noauth",
+    "build": "npm run build:common && npm run build:api && npm run build:ui",
+    "build:common": "npm run build --w=packages/common",
+    "build:api": "npm run build --w=packages/api",
+    "build:api:noauth": "npm run build:noauth --w=packages/api",
+    "build:ui": "npm run build --w=packages/ui",
+    "build:ui:noauth": "npm run build:noauth --w=packages/ui",
+    "common": "npm run watch --workspace=packages/common",
+    "api": "npm run dev --workspace=packages/api",
+    "api:noauth": "npm run dev:noauth --workspace=packages/api",
+    "ui": "npm run start --workspace=packages/ui",
+    "ui:noauth": "npm run start:noauth --workspace=packages/ui",
+    "watch": "concurrently \"npm run common\" \"npm run api\" \"npm run ui\"",
+    "watch:noauth": "concurrently \"npm run common\" \"npm run api:noauth\" \"npm run ui:noauth\" ",
+    "prettier": "prettier --check .",
+    "prettier:fix": "prettier --write .",
+    "test": "npm run test --workspace=packages/ui",
+    "lint": "eslint . --ext .ts",
+    "prepare": "husky"
+  },
+  "author": "@artemnih",
+  "license": "ISC",
+  "workspaces": [
+    "packages/common",
+    "packages/ui",
+    "packages/api"
+  ],
+  "devDependencies": {
+    "concurrently": "^8.2.1",
+    "eslint": "^8.56.0",
+    "husky": "^9.0.11",
+    "prettier": "^3.0.3",
+    "typescript": "~5.2.2",
+    "typescript-eslint": "^7.0.2"
+  }
+}
