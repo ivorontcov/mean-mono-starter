@@ -33,16 +33,31 @@ npm i
 
 Run project in development mode
 
+### No Auth
 If auth is not yet configured, run the following command to start the project without auth:
 
 ```bash
-npm run noauth # no auth mode
+npm run noauth
 ```
 
-if Auth url is provided in `api` .env and in `ui` app.config.json
+### Configuring Auth
+Configure auth:
+
+1. **API Backend**: Create `/packages/api/.env` file with the following content:
+For example:
+```bash
+AUTH_URL=https://yourauthprovider.io/_api/auth/tenantname
+```
+You can also peak into `.env-example` file for reference.
+
+2. **UI Frontend**: Modify `/packages/ui/src/assets/app.config.json` and set 
+- `authority` to `https://yourauthprovider.io/_api/auth/tenantname`
+- `clientId` to `your-client-id`
+
+Then run the following command to start the project with auth:
 
 ```bash
-npm start # with auth mode
+npm start
 ```
 
 ## Building
