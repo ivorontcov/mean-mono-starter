@@ -1,12 +1,15 @@
 {
     "auth": {
         "responseType": "code",
-        "authority": "https://a-ci.exampleauth.io/_api/auth/tenant-name",
-        "clientId": "my-client-id",
+        "authority": "https://a-ci.ncats.io/_api/auth/aspire",
+        "clientId": "ViqijtciG9p2ChhZFPikI",
+        "scope": "openid profile offline_access email tenant identity_provider",
+        "codeFlowUrlPattern": "?code=",
+        "implicitFlowUrlPattern": "#id_token=",
         "automaticSilentRenew": true,
         "accessTokenExpiringNotificationTimeInSeconds": 60
     },
     "backend": {
-        "baseUrl": "http://127.0.0.1:8080"
+        "baseUrl": "http://127.0.0.1:8000"
     }
 }
